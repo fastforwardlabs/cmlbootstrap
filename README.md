@@ -16,8 +16,7 @@ pip3 install git+https://github.com/fastforwardlabs/cmlbootstrap#egg=cmlbootstra
 from cmlbootstrap import CMLBootstrap
 
 cml = CMLBootstrap(host, username, api_key, project_name)
-
-user_details = cml.get_user({})
+user_details = cml.get_user({}) # example method to fetch user details
 
 ```
 
