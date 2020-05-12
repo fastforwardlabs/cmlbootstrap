@@ -7,15 +7,15 @@ The CML Bootstrap library provides a list of methods for interacting with the CM
 ## Installation
 
 ```shell
-pip3 install -e git+https://github.com/fastforwardlabs/cmlbootstrap#egg=cmlbootstrap
+pip3 install git+https://github.com/fastforwardlabs/cmlbootstrap#egg=cmlbootstrap
 ```
 
 ## Usage
 
 ```python
-import CMLBootstrap
+from cmlbootstrap import CMLBootstrap
 
-cmlb = CMLBootsrap(host, username, api_key, project_name)
+cmlb = CMLBootstrap(host, username, api_key, project_name)
 
 user_details = cmlb.get_user()
 
