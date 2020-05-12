@@ -1,1 +1,1 @@
-from cmlboostrap.BootstrapApi import CMLBootstrap
+from cmlboostrap.CMLBootstrap import CMLBootstrap
