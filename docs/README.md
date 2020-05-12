@@ -1,11 +1,11 @@
-Module cmlbootstrap
+Module CMLBootstrap
 ===================
 
 Classes
 -------
 
 `CMLBootstrap(host, username, api_key, project_name, log_level=20)`
-:   Wrapper for calls to the internal CML api.
+:   Wrapper class for calls to the internal CML api.
     
     Attributes:
         host (str): URL for the CML instance host.
@@ -16,7 +16,13 @@ Classes
     ### Methods
 
     `create_application(self, params)`
-    :
+    :   Create an Application
+        
+        Arguments:
+            params {dict} -- [dictionary containing application parameters]
+        
+        Returns:
+            [dict] -- [dictionary containing job details]
 
     `create_job(self, params)`
     :   Create a job
@@ -28,7 +34,13 @@ Classes
             [dict] -- [dictionary containing job details]
 
     `create_model(self, params)`
-    :
+    :   Create a model
+        
+        Arguments:
+            params {dict} -- [dictionary containing model parameters]
+        
+        Returns:
+            [dict] -- [dictionary containing model details]
 
     `delete_application(self, application_id, params)`
     :   Delete application given id
@@ -59,7 +71,7 @@ Classes
             dict -- Nothing.
 
     `get_application(self, app_id, params)`
-    :   Get details for an  application
+    :   Get details for an application
         
         Arguments:
             params {dict} -- None
@@ -135,7 +147,7 @@ Classes
             [dict] -- []
 
     `start_job(self, job_id, params)`
-    :   Start a job    
+    :   Start a job
         
         Arguments:
             params {dict} -- [description]
@@ -145,7 +157,7 @@ Classes
             [dict] -- [ ]
 
     `stop_job(self, job_id, params)`
-    :   Stop a job    
+    :   Stop a job
         
         Arguments:
             params {dict} -- [description]

@@ -15,15 +15,15 @@ pip3 install git+https://github.com/fastforwardlabs/cmlbootstrap#egg=cmlbootstra
 ```python
 from cmlbootstrap import CMLBootstrap
 
-cmlb = CMLBootstrap(host, username, api_key, project_name)
+cml = CMLBootstrap(host, username, api_key, project_name)
 
-user_details = cmlb.get_user()
+user_details = cml.get_user({})
 
 ```
 
 ## Documentation
 
-The library current supports methods that cover the `jobs`, `models`, `applications` and `experiments` abstractions on CML. For additional details, see the [documentation README](docs).
+The library current supports methods that cover the `jobs`, `models`, `applications` and `experiments` abstractions on CML. For additional details, see the library [documentation](docs).
 
 
 

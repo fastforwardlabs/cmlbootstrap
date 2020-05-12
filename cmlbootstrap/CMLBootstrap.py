@@ -212,7 +212,7 @@ class CMLBootstrap:
         return response
 
     def start_job(self, job_id, params):
-        """Start a job    
+        """Start a job
 
         Arguments:
             params {dict} -- [description]
@@ -240,7 +240,7 @@ class CMLBootstrap:
         return response
 
     def stop_job(self, job_id, params):
-        """Stop a job    
+        """Stop a job
 
         Arguments:
             params {dict} -- [description]
@@ -343,6 +343,14 @@ class CMLBootstrap:
         return response
 
     def create_model(self, params):
+        """Create a model
+
+        Arguments:
+            params {dict} -- [dictionary containing model parameters]
+
+        Returns:
+            [dict] -- [dictionary containing model details]
+        """
         create_model_endpoint = "/".join([self.host,
                                           "api/altus-ds-1", "models", "create-model"])
         res = requests.post(
@@ -362,7 +370,7 @@ class CMLBootstrap:
         return response
 
     def get_application(self, app_id, params):
-        """Get details for an  application
+        """Get details for an application
 
         Arguments:
             params {dict} -- None
@@ -445,6 +453,14 @@ class CMLBootstrap:
         return None
 
     def create_application(self, params):
+        """Create an Application
+
+        Arguments:
+            params {dict} -- [dictionary containing application parameters]
+
+        Returns:
+            [dict] -- [dictionary containing job details]
+        """
         create_application_endpoint = "/".join([self.host, "api/v1/projects",
                                                 self.username, self.project_name, "applications"])
         res = requests.post(
