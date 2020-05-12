@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-    name='CMLBootstrap',
-    packages=['CMLBootstrap'],
+    name='cmlbootstrap',
+    packages=['cmlbootstrap'],
     version='0.0.1',
     license='MIT',
     description='Wrapper class to launch jobs, experiments, applications and models on Cloudera Machine Learning',

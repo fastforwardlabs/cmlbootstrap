@@ -4,7 +4,7 @@ import logging
 
 
 class CMLBootstrap:
-    """wrapper for calls to the internal CML api
+    """Wrapper class for calls to the internal CML api.
 
     Attributes:
         host (str): URL for the CML instance host.
