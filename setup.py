@@ -1,13 +1,13 @@
-from distutils.core import setup
-setup(
+import setuptools
+setuptools.setup(
     name='cmlbootstrap',
-    packages=['cmlbootstrap'],
+    # packages=['cmlbootstrap'],
     version='0.0.1',
     license='MIT',
     description='Wrapper class to launch jobs, experiments, applications and models on Cloudera Machine Learning',
     author='Cloudera',
     url='https://github.com/fastforwardlabs/cmlbootstrap',
-    download_url='https://github.com/fastforwardlabs/cmlbootstrap/archive/v0.0.1.tar.gz',
+    # download_url='https://github.com/fastforwardlabs/cmlbootstrap/archive/v0.0.1.tar.gz',
     keywords=['CDSW', 'Cloudera', 'Machine Learning'],
     # install_requires=[],
     classifiers=[
