@@ -7,7 +7,7 @@ setup(
     description='Wrapper class to launch jobs, experiments, applications and models on Cloudera Machine Learning',
     author='Cloudera',
     url='https://github.com/fastforwardlabs/cmlbootstrap',
-    download_url='https://github.com/fastforwardlabs/cmlbootstrap/archive/v_001.tar.gz',
+    # download_url='https://github.com/fastforwardlabs/cmlbootstrap/archive/v_001.tar.gz',
     keywords=['CDSW', 'Cloudera', 'Machine Learning'],
     # install_requires=[],
     classifiers=[
