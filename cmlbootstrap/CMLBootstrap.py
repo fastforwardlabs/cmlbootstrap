@@ -369,7 +369,7 @@ class CMLBootstrap:
 
         return response
 
-    def set_model_auth(self,params):
+    def set_model_auth(self, params):
         """Enable or disable Model Authentication
 
         Arguments:
@@ -380,7 +380,7 @@ class CMLBootstrap:
                     [dict] -- Nothing
         """
         set_model_auth_endpoint = "/".join([self.host,
-                                          "api/altus-ds-1", "models", "set-model-auth"])
+                                            "api/altus-ds-1", "models", "set-model-auth"])
         res = requests.post(
             set_model_auth_endpoint,
             headers={"Content-Type": "application/json"},
@@ -393,7 +393,7 @@ class CMLBootstrap:
             logging.error(response)
         else:
             logging.debug(">> Set Model Auth")
-        return response        
+        return response
 
     def get_application(self, app_id, params):
         """Get details for an application
@@ -504,3 +504,19 @@ class CMLBootstrap:
             logging.debug(" Application created")
 
         return response
+
+    def create_environment_variable(self, params):
+        create_environment_variable_endpoint = "/".join([self.host, "api/v1/projects",
+                                                         self.username, self.project_name, "environment"])
+        res = requests.put(
+            create_environment_variable_endpoint,
+            headers={"Content-Type": "application/json"},
+            auth=(self.api_key, ""),
+            data=json.dumps(params)
+        )
+        #response = res.json()
+        if (res.status_code != 204):
+            logging.error("Reponse code was " + res.status_code)
+        else:
+            logging.debug("Environment variable created")
+        return res.status_code
