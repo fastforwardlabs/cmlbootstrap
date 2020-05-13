@@ -369,6 +369,32 @@ class CMLBootstrap:
 
         return response
 
+    def set_model_auth(self,params):
+        """Enable or disable Model Authentication
+
+        Arguments:
+            params {dict} -- None, example input {"id": 5, "enableAuth": False}
+            app_id {str} -- id for appliacation to be retrieved
+
+        Returns:
+                    [dict] -- Nothing
+        """
+        set_model_auth_endpoint = "/".join([self.host,
+                                          "api/altus-ds-1", "models", "set-model-auth"])
+        res = requests.post(
+            set_model_auth_endpoint,
+            headers={"Content-Type": "application/json"},
+            auth=(self.api_key, ""),
+            data=json.dumps(params)
+        )
+        response = res.json()
+        if (res.status_code != 200):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug(">> Set Model Auth")
+        return response        
+
     def get_application(self, app_id, params):
         """Get details for an application
 
