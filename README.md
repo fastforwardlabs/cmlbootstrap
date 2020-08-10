@@ -1,6 +1,6 @@
 ## CML Bootstrap
 
-> [Unoffocial] Wrapper class for the interacting with the CML API.
+> [**Unoffocial and Unsupported**] Wrapper class for the interacting with the CML API.
 
 The CML Bootstrap library provides a list of methods for interacting with the CML backend api for `jobs`, `models`, `applications` and `experiments`.
 
