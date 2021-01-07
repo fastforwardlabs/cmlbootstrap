@@ -523,8 +523,16 @@ class CMLBootstrap:
         return res.status_code
 
     def add_environment_variable(self, params):
+         """Add project level environment variables
 
-        env_vars = dict(os.environ)
+        Arguments:
+            params {dict} -- [dictionary containing new environment variables]
+
+        Returns:
+            res.status_code
+        """
+
+        env_vars = self.get_environment_variables({})
         env_vars.update(params)
 
         create_environment_variable_endpoint = "/".join([self.host, "api/v1/projects",
