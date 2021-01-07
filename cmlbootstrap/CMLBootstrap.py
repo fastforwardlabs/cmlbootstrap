@@ -523,7 +523,7 @@ class CMLBootstrap:
         return res.status_code
 
     def add_environment_variable(self, params):
-         """Add project level environment variables
+        """Add project level environment variables
 
         Arguments:
             params {dict} -- [dictionary containing new environment variables]
@@ -531,7 +531,6 @@ class CMLBootstrap:
         Returns:
             res.status_code
         """
-
         env_vars = self.get_environment_variables({})
         env_vars.update(params)
 
@@ -548,6 +547,7 @@ class CMLBootstrap:
             logging.error("Reponse code was " + res.status_code)
         else:
             logging.debug("Environment variable created")
+
         return res.status_code
 
     def get_environment_variables(self, params):
