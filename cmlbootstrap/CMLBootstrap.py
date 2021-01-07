@@ -541,6 +541,34 @@ class CMLBootstrap:
         else:
             logging.debug("Environment variable created")
         return res.status_code
+
+    def get_environment_variables(self, params):
+        """Get the project level environment variables
+
+        Arguments:
+            params {dict} -- None needed.
+
+        Returns:
+            dict -- [dictionary containing project level environment variables]
+        """
+        create_environment_variable_endpoint = "/".join([self.host, "api/v1/projects",
+                                                         self.username, self.project_name, "environment"])
+    
+        res = requests.get(
+                create_environment_variable_endpoint,
+                headers={"Content-Type": "application/json"},
+                auth=(self.api_key, ""),
+                data=json.dumps(params)
+        )
+        
+        response = res.json()
+        if (res.status_code != 200):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug("Environment variables retrieved")
+
+        return response
     
     def add_project_editor(self, params):
         add_project_editor_endpoint = "/".join([self.host, "api/v1/projects",
