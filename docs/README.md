@@ -165,3 +165,21 @@ Classes
         
         Returns:
             [dict] -- []
+            
+    `get_environment_variables(self, params)`
+    :   Get the project level environment variables
+        
+        Arguments:
+            params {dict} -- None
+        
+        Returns:
+            [dict] -- []
+            
+    `create_environment_variable(self, params)`
+    :   Add project level environment variables
+        
+        Arguments:
+            params {dict} -- [dict containing environment variable key pairs]
+        
+        Returns:
+            [dict] -- []
