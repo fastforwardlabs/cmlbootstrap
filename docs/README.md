@@ -12,9 +12,9 @@ Classes
         username (str): Current username.
         api_key (str): API key.
         project_name (str): Project name.
-
+    
     ### Methods
-
+    
     `create_application(self, params)`
     :   Create an Application
         
@@ -23,7 +23,7 @@ Classes
         
         Returns:
             [dict] -- [dictionary containing job details]
-
+    
     `create_job(self, params)`
     :   Create a job
         
@@ -32,7 +32,7 @@ Classes
         
         Returns:
             [dict] -- [dictionary containing job details]
-
+    
     `create_model(self, params)`
     :   Create a model
         
@@ -41,7 +41,7 @@ Classes
         
         Returns:
             [dict] -- [dictionary containing model details]
-
+    
     `delete_application(self, application_id, params)`
     :   Delete application given id
         
@@ -51,7 +51,7 @@ Classes
         
         Returns:
             None -- None
-
+    
     `delete_job(self, job_id, params)`
     :   Delete a job given its id
         
@@ -60,7 +60,7 @@ Classes
             job_id {str} -- id for job to be deleted
         Returns:
             [dict] -- [None. delete endpoint does not return a value]
-
+    
     `delete_model(self, params)`
     :   Delete a project given its id
         
@@ -69,7 +69,7 @@ Classes
         
         Returns:
             dict -- Nothing.
-
+    
     `get_application(self, app_id, params)`
     :   Get details for an application
         
@@ -79,7 +79,7 @@ Classes
         
         Returns:
             {dict} -- dictionary of application details
-
+    
     `get_applications(self, params)`
     :   Get list of applications within current project
         
@@ -88,7 +88,7 @@ Classes
         
         Returns:
             list -- list of current applications
-
+    
     `get_default_engine(self, params)`
     :   Get the default engine for the given project
         
@@ -97,7 +97,7 @@ Classes
         
         Returns:
             dict -- [dictionary containing default engine details]
-
+    
     `get_jobs(self, params)`
     :   Return a list of jobs associated with the given project
         
@@ -106,10 +106,10 @@ Classes
         
         Returns:
             list -- List of jobs
-
+    
     `get_model(self, params)`
     :
-
+    
     `get_models(self, params)`
     :   Return a list of models associated with the given project
         
@@ -118,7 +118,7 @@ Classes
         
         Returns:
             list -- List of models
-
+    
     `get_project(self, params)`
     :   Get details for a given project
         
@@ -127,7 +127,7 @@ Classes
         
         Returns:
             [dict] -- [dictionary containing project details]
-
+    
     `get_user(self, params)`
     :   Get details for a given user
         
@@ -136,7 +136,7 @@ Classes
         
         Returns:
             [dict] -- [dictionary containing user details]
-
+    
     `run_experiment(self, params)`
     :   Run an experiment
         
@@ -145,7 +145,7 @@ Classes
         
         Returns:
             [dict] -- []
-
+    
     `start_job(self, job_id, params)`
     :   Start a job
         
@@ -155,13 +155,31 @@ Classes
         
         Returns:
             [dict] -- [ ]
-
+    
     `stop_job(self, job_id, params)`
     :   Stop a job
         
         Arguments:
             params {dict} -- [description]
             job_id {str} -- id for job to be stopped
+        
+        Returns:
+            [dict] -- []
+            
+    `get_environment_variables(self, params)`
+    :   Get the project level environment variables
+        
+        Arguments:
+            params {dict} -- None
+        
+        Returns:
+            [dict] -- []
+            
+    `create_environment_variable(self, params)`
+    :   Add project level environment variables
+        
+        Arguments:
+            params {dict} -- [dict containing environment variable key pairs]
         
         Returns:
             [dict] -- []

@@ -1,6 +1,7 @@
 import requests
 import json
 import logging
+import os
 
 
 class CMLBootstrap:
@@ -506,20 +507,60 @@ class CMLBootstrap:
         return response
 
     def create_environment_variable(self, params):
+        """Add project level environment variables
+
+        Arguments:
+            params {dict} -- [dictionary containing new environment variables]
+
+        Returns:
+            res.status_code
+        """
+        env_vars = self.get_environment_variables({})
+        env_vars.update(params)
+
         create_environment_variable_endpoint = "/".join([self.host, "api/v1/projects",
                                                          self.username, self.project_name, "environment"])
         res = requests.put(
             create_environment_variable_endpoint,
             headers={"Content-Type": "application/json"},
             auth=(self.api_key, ""),
-            data=json.dumps(params)
+            data=json.dumps(env_vars)
         )
         #response = res.json()
         if (res.status_code != 204):
             logging.error("Reponse code was " + res.status_code)
         else:
             logging.debug("Environment variable created")
+
         return res.status_code
+
+    def get_environment_variables(self, params):
+        """Get the project level environment variables
+
+        Arguments:
+            params {dict} -- None needed.
+
+        Returns:
+            dict -- [dictionary containing project level environment variables]
+        """
+        create_environment_variable_endpoint = "/".join([self.host, "api/v1/projects",
+                                                         self.username, self.project_name, "environment"])
+    
+        res = requests.get(
+                create_environment_variable_endpoint,
+                headers={"Content-Type": "application/json"},
+                auth=(self.api_key, ""),
+                data=json.dumps(params)
+        )
+        
+        response = res.json()
+        if (res.status_code != 200):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug("Environment variables retrieved")
+
+        return response
     
     def add_project_editor(self, params):
         add_project_editor_endpoint = "/".join([self.host, "api/v1/projects",
