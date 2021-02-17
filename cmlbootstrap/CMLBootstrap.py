@@ -578,3 +578,19 @@ class CMLBootstrap:
         else:
             logging.debug("Editor added")
         return response 
+    
+    def add_new_engine(self, params):
+        add_project_editor_endpoint = "/".join([self.host, "api/v1/engine-images"])
+        res = requests.post(
+            add_project_editor_endpoint,
+            headers={"Content-Type": "application/json"},
+            auth=(self.api_key, ""),
+            data=json.dumps(params)
+        )
+        response = res.json()
+        if (res.status_code != 200):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug("Engine added")
+        return response     
