@@ -2,7 +2,7 @@ import setuptools
 setuptools.setup(
     name='cmlbootstrap',
     packages=setuptools.find_packages(),
-    version='0.0.2',
+    version='0.0.3',
     license='MIT',
     description='Wrapper class to launch jobs, experiments, applications and models on Cloudera Machine Learning',
     author='Cloudera',
