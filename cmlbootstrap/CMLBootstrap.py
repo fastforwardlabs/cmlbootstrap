@@ -34,7 +34,7 @@ class CMLBootstrap:
 
         logging.debug("Api Initiated")
 
-    def get_default_engine(self, params):
+    def get_default_engine(self, params={}):
         """Get the default engine for the given project
 
         Arguments:
@@ -62,7 +62,7 @@ class CMLBootstrap:
 
         return response
 
-    def get_user(self, params):
+    def get_user(self, params={}):
         """Get details for a given user
 
         Arguments:
@@ -90,7 +90,7 @@ class CMLBootstrap:
 
         return response
 
-    def get_project(self, params):
+    def get_project(self, params={}):
         """Get details for a given project
 
         Arguments:
@@ -336,6 +336,14 @@ class CMLBootstrap:
         return response
 
     def get_model(self, params):
+        """Get model info given its id
+
+        Arguments:
+            params {dict} -- {id: modelId}
+
+        Returns:
+            dict -- [dictionary of model details].
+        """        
         get_model_endpoint = "/".join([self.host,
                                        "api/altus-ds-1", "models", "get-model"])
         res = requests.post(
@@ -435,7 +443,7 @@ class CMLBootstrap:
 
         return response
 
-    def get_applications(self, params):
+    def get_applications(self, params={}):
         """Get list of applications within current project
 
         Arguments:
@@ -545,7 +553,7 @@ class CMLBootstrap:
 
         return res.status_code
 
-    def get_environment_variables(self, params):
+    def get_environment_variables(self, params={}):
         """Get the project level environment variables
 
         Arguments:
