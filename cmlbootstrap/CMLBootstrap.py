@@ -18,7 +18,14 @@ class CMLBootstrap:
         project_name (str): Project name.
     """
 
-    def __init__(self, host, username, api_key, project_name, log_level=logging.INFO):
+    def __init__(
+            self, 
+            host = os.getenv("CDSW_API_URL").split(":")[0] + "://" + os.getenv("CDSW_DOMAIN"), 
+            username = os.getenv("HADOOP_USER_NAME"), 
+            api_key= os.getenv("CDSW_API_KEY"), 
+            project_name = os.getenv("CDSW_PROJECT"), 
+            log_level=logging.INFO
+        ):
         self.host = host
         self.username = username
         self.api_key = api_key
