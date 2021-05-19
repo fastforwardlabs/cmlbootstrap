@@ -622,14 +622,14 @@ class CMLBootstrap:
             logging.error('HADOOP_CONF_DIR environment variable not defined')
         return storage
     
-    def boto3_client(self):
-        """Retrieve S3 credentials from ID Broker and return a boto3 client.
+    def get_id_broker(self):
+        """Get the ID Broker host name
 
         Arguments:
             None.
 
         Returns:
-            boto3.client -- A boto3 client connected to the AWS environment
+            str -- The hostname for the ID Broker for the default Data Lake
         """
         try:
             hadoop_conf_dir = os.environ['HADOOP_CONF_DIR']
@@ -639,26 +639,41 @@ class CMLBootstrap:
                 for prop in root.findall('property'):
                     if prop.find('name').text == "fs.s3a.ext.cab.address":
                         id_broker = prop.find('value').text.split("//")[1].split(":")[0]
-                r = requests.get("https://{}:8444/gateway/dt/knoxtoken/api/v1/token".format(id_broker), auth=HTTPKerberosAuth())
-                url = "https://{}:8444/gateway/aws-cab/cab/api/v1/credentials".format(id_broker)
-                headers = {
-                    'Authorization': "Bearer "+ r.json()['access_token'],
-                    'cache-control': "no-cache"
-                    }
-
-                response = requests.request("GET", url, headers=headers)
-                ACCESS_KEY=response.json()['Credentials']['AccessKeyId']
-                SECRET_KEY=response.json()['Credentials']['SecretAccessKey']
-                SESSION_TOKEN=response.json()['Credentials']['SessionToken']
-                client = boto3.client(
-                    's3',
-                    aws_access_key_id=ACCESS_KEY,
-                    aws_secret_access_key=SECRET_KEY,
-                    aws_session_token=SESSION_TOKEN,
-                )
-                logging.debug("S3 credential found and boto3 client instantiated")
             except:
                 logging.error("Unable to get S3 credentails")
         except:
             logging.error('HADOOP_CONF_DIR environment variable not defined')
+        return id_broker
+
+
+    def boto3_client(self,id_broker=get_id_broker()):
+        """Retrieve S3 credentials from ID Broker and return a boto3 client.
+
+        Arguments:
+            None.
+
+        Returns:
+            boto3.client -- A boto3 client connected to the AWS environment
+        """
+        try:
+            r = requests.get("https://{}:8444/gateway/dt/knoxtoken/api/v1/token".format(id_broker), auth=HTTPKerberosAuth())
+            url = "https://{}:8444/gateway/aws-cab/cab/api/v1/credentials".format(id_broker)
+            headers = {
+                'Authorization': "Bearer "+ r.json()['access_token'],
+                'cache-control': "no-cache"
+                }
+
+            response = requests.request("GET", url, headers=headers)
+            ACCESS_KEY=response.json()['Credentials']['AccessKeyId']
+            SECRET_KEY=response.json()['Credentials']['SecretAccessKey']
+            SESSION_TOKEN=response.json()['Credentials']['SessionToken']
+            client = boto3.client(
+                's3',
+                aws_access_key_id=ACCESS_KEY,
+                aws_secret_access_key=SECRET_KEY,
+                aws_session_token=SESSION_TOKEN,
+            )
+            logging.debug("S3 credential found and boto3 client instantiated")
+        except:
+            logging.error("Unable to get S3 credentails")
         return client
