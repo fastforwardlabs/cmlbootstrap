@@ -646,7 +646,7 @@ class CMLBootstrap:
         return id_broker
 
 
-    def boto3_client(self,id_broker=get_id_broker()):
+    def boto3_client(self,id_broker):
         """Retrieve S3 credentials from ID Broker and return a boto3 client.
 
         Arguments:
