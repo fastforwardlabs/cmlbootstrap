@@ -143,7 +143,7 @@ class CMLBootstrap:
             logging.debug("Experiment created")
         return response
 
-    def get_jobs(self, params):
+    def get_jobs(self, params={}):
         """Return a list of jobs associated with the given project
 
         Arguments:
@@ -170,7 +170,7 @@ class CMLBootstrap:
 
         return response
 
-    def delete_job(self, job_id, params):
+    def delete_job(self, job_id, params={}):
         """Delete a job given its id
 
         Arguments:
@@ -223,7 +223,7 @@ class CMLBootstrap:
             logging.debug("Job created")
         return response
 
-    def start_job(self, job_id, params):
+    def start_job(self, job_id, params={}):
         """Start a job
 
         Arguments:
@@ -251,7 +251,7 @@ class CMLBootstrap:
 
         return response
 
-    def stop_job(self, job_id, params):
+    def stop_job(self, job_id, params={}):
         """Stop a job
 
         Arguments:
@@ -286,10 +286,13 @@ class CMLBootstrap:
 
         Arguments:
             params {dict} -- None
+            If you are looking for the models in the current project, use
+            {"projectId" : project_id } as the params where project_id is an int of the project number.
 
         Returns:
             list -- List of models
         """
+          
         get_models_endpoint = "/".join([self.host,
                                         "api/altus-ds-1", "models", "list-models"])
         res = requests.post(
