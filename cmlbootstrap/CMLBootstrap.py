@@ -392,6 +392,33 @@ class CMLBootstrap:
 
         return response
 
+    def rebuild_model(self, params):
+        """Deploy a new model build
+
+        Arguments:
+            params {dict} -- [dictionary containing model parameters]
+
+        Returns:
+            [dict] -- [dictionary containing model details]
+        """
+        build_model_endpoint = "/".join([self.host,
+                                          "api/altus-ds-1", "models", "build-model"])
+        res = requests.post(
+            build_model_endpoint,
+            headers={"Content-Type": "application/json"},
+            auth=(self.api_key, ""),
+            data=json.dumps(params)
+        )
+
+        response = res.json()
+        if (res.status_code != 200):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug(" Model created")
+
+        return response        
+
     def set_model_auth(self, params):
         """Enable or disable Model Authentication
 
