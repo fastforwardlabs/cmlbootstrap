@@ -9,7 +9,7 @@ setuptools.setup(
     url='https://github.com/fastforwardlabs/cmlbootstrap',
     download_url='https://github.com/fastforwardlabs/cmlbootstrap/archive/v0.0.2.tar.gz',
     keywords=['CDSW', 'Cloudera', 'Machine Learning'],
-    install_requires=[],
+    install_requires=['boto3==1.17.62','requests-kerberos==0.12.0'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
