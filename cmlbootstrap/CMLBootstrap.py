@@ -662,7 +662,10 @@ class CMLBootstrap:
             str -- The hostname for the ID Broker for the default Data Lake
         """
         try:
-            hadoop_conf_dir = os.environ['HADOOP_CONF_DIR']
+            if os.path.exists('/etc/hadoop/conf/hive-site.xml'):
+                hadoop_conf_dir = '/etc/hadoop/conf'
+            else:
+                hadoop_conf_dir = os.environ['HADOOP_CONF_DIR']
             try:
                 tree = ET.parse('{}/core-site.xml'.format(hadoop_conf_dir))
                 root = tree.getroot()
