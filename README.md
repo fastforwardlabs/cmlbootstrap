@@ -7,7 +7,7 @@ The CML Bootstrap library provides a list of methods for interacting with the CM
 ## Installation
 
 ```shell
-pip3 install git+https://github.com/fastforwardlabs/cmlbootstrap#egg=cmlbootstrap
+pip3 install git+https://github.com/fletchjeff/cmlbootstrap#egg=cmlbootstrap
 ```
 
 ## Usage
