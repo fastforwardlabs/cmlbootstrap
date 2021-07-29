@@ -710,3 +710,21 @@ class CMLBootstrap:
         except:
             logging.error("Unable to get S3 credentails")
         return client
+    
+    def get_runtimes(self, params={}):
+        """Get the list of runtimes including ids
+
+        Arguments:
+            params {dict} -- None needed.
+
+        Returns:
+            dict -- [dictionary containing runtimes and the associated details]
+        """
+        get_runtimes_endpoint = "/".join([self.host, "api/v1/runtimes?includeAll=true"])
+
+        res = requests.get(
+            get_runtimes_endpoint,
+            headers={"Content-Type": "application/json"},
+            auth=(self.api_key, ""),
+            data=json.dumps(params)
+        )
