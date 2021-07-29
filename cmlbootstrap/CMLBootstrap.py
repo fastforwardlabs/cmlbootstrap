@@ -728,3 +728,12 @@ class CMLBootstrap:
             auth=(self.api_key, ""),
             data=json.dumps(params)
         )
+        response = res.json()
+        
+        if (res.status_code != 200):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug("Runtime details retrieved")
+
+        return response
