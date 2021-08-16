@@ -737,3 +737,32 @@ class CMLBootstrap:
             logging.debug("Runtime details retrieved")
 
         return response
+
+    
+    def get_runtimes_addons(self, params={"component":"Spark"}):
+        """Get the list of runtime addons
+
+        Arguments:
+            params {dict} -- None needed.
+
+        Returns:
+            dict -- [dictionary containing runtime addons]
+        """
+        get_runtimes_endpoint = "/".join([self.host, "api/v1/runtime-addons"])
+
+        res = requests.post(
+            get_runtimes_endpoint,
+            headers={"Content-Type": "application/json"},
+            auth=(self.api_key, ""),
+            data=json.dumps(params)
+        )
+        response = res.json()
+        
+        if (res.status_code != 201):
+            logging.error(response["message"])
+            logging.error(response)
+        else:
+            logging.debug("Runtime addon details retrieved")
+
+        return response
+    
