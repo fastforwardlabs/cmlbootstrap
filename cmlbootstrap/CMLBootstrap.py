@@ -758,7 +758,7 @@ class CMLBootstrap:
         )
         response = res.json()
         
-        if (res.status_code != 201):
+        if (res.status_code != 200):
             logging.error(response["message"])
             logging.error(response)
         else:
