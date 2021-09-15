@@ -1,4 +1,8 @@
-## [**Unoffocial and Unsupported**] CML Bootstrap
+## [**Unofficial and Unsupported**] CML Bootstrap
+
+**This repo is unnofficial and unsupported. The supported means of interacting with CML via API is CML API v2. The documentation for CML API v2 is [here](https://docs.cloudera.com/machine-learning/cloud/api/topics/ml-api-v2.html).**
+
+---
 
 > Wrapper class for the interacting with the CML API. Please note that this library is _experimental_ and currently unsupported.
 
